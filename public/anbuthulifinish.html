@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blood Donation - ANBU THULI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    body { margin: 0; font-family: Copperplate, Papyrus, fantasy; color: white; }
+    nav { display: flex; justify-content: space-between; align-items: center;
+          background: rgba(0,0,0,0.9); padding: 10px 20px; position: sticky; top: 0; z-index: 1000; }
+    .logo { font-weight: bold; font-size: 1.2rem; color: #b30000; letter-spacing: 2px; }
+    nav .nav-links { display: flex; gap: 8px; }
+    nav .nav-links button { padding: 6px 12px; background: #b30000; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: bold; }
+    nav .nav-links button:hover, nav .nav-links button.active { background: #ffcc00; color: #000; }
+    section { display: none; padding: 40px 20px; min-height: 90vh; }
+    section.active { display: block; }
+    #home { background: url('https://surgmedia.com/wp-content/uploads/2020/10/2171-blood-donation.jpg') center/cover no-repeat; text-align: center; }
+    #home h1 { font-size: 42px; color: #ffcc00; margin: 20px 0; }
+    .register-btn { display: inline-block; margin: 10px; padding: 10px 24px; font-size: 16px; color: white;
+                    background: linear-gradient(45deg, #ff0000, #b30000); border-radius: 30px; text-decoration: none; font-weight: bold; }
+    .form-container { max-width: 500px; margin: auto; background: #111; padding: 20px; border-radius: 10px; }
+    .form-container h1 { text-align: center; color: #ffcc00; }
+    .form-container label { display: block; margin-top: 12px; }
+    .form-container input { margin-top: 6px; }
+    .form-container input[type="text"], .form-container input[type="number"], .form-container input[type="password"], .form-container input[type="email"] {
+      width: 100%; padding: 8px; border-radius: 6px; border: none; margin-bottom: 10px;
+    }
+    .form-container button { margin-top: 15px; width: 100%; padding: 10px; background: #b30000; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+    .form-container button:hover { background: #ffcc00; color: #000; }
+    #info .hero { text-align: center; padding: 25px; background: url('https://media.istockphoto.com/id/1320162065/vector/blood-cells-red-erythrocytes.jpg?s=612x612&w=0&k=20&c=rX8kGwiOsHW-V-BOal3Cf6ADKdjx_U5snDdykya0jbs=') center/cover; }
+    #info .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 20px; padding: 20px; }
+    .card { background: #222; border-radius: 10px; padding: 15px; text-align: center; }
+    .card i { font-size: 2rem; color: #ffcc00; }
+    .card h2 { margin: 10px 0; color: white; }
+    .card p, .card ul { font-size: 0.9rem; color: #ccc; }
+    #about { background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqIhrJsojNi3B04vlP8jjQE5VcHCXQhOCUTQ&s') center/cover fixed; position: relative; text-align: center; }
+    #about::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.6); }
+    #about * { position: relative; z-index: 2; }
+    #contact .contact-container { max-width: 700px; margin: auto; background: #181818; padding: 20px; border-radius: 10px; }
+    footer { text-align: center; background: #000; padding: 15px; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">ANBU THULI</div>
+    <div class="nav-links">
+      <button onclick="showPage('home')">Home</button>
+      <button onclick="showPage('info')">Info</button>
+      <button onclick="showPage('about')">About Us</button>
+      <button onclick="showPage('feedback')">Feedback</button>
+      <button onclick="showPage('contact')">Contact</button>
+      <button onclick="showPage('hospital-register')">Hospital Register</button>
+      <button onclick="showPage('hospital-login')">Hospital Login</button>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home" class="active">
+    <h1>DONATE BLOOD<br>SAVE LIFE</h1>
+    <a href="#" onclick="showPage('donor-eligibility')" class="register-btn">Register as Donor</a>
+    <a href="#" onclick="showPage('hospital-register')" class="register-btn">Register as Hospital</a>
+    <a href="#" onclick="showPage('hospital-login')" class="register-btn">Hospital Login</a>
+  </section>
+
+  <!-- INFO -->
+  <section id="info">
+    <div class="hero">
+      <h1>Donate Blood, Save Life</h1>
+      <p>Learn why blood donation matters, who can donate, and how you can help save lives.</p>
+    </div>
+    <div class="container">
+      <div class="card"><i class="fas fa-hand-holding-heart"></i><h2>Why Donate?</h2><p>Every 2 seconds, someone needs blood. One unit can save 3 lives.</p></div>
+      <div class="card"><i class="fas fa-star-of-life"></i><h2>Benefits</h2><ul><li>Saves lives</li><li>Helps patients</li><li>Keeps heart healthy</li><li>Free health check</li></ul></div>
+      <div class="card"><i class="fas fa-user-check"></i><h2>Eligibility</h2><ul><li>Ages 18–60</li><li>Weight 50kg+</li><li>Hemoglobin ≥ 12.5</li></ul></div>
+      <div class="card"><i class="fas fa-hospital"></i><h2>Process</h2><p>Safe, quick (15–20 mins) by trained staff.</p></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h1>About Us</h1>
+    <p><b>ANBU THULI</b> is a non-profit initiative started by volunteers to promote blood donation and connect donors with hospitals quickly.</p>
+    <h3>Our Founders</h3>
+    <ul><li>Mohammed Harries A</li><li>Mohan Kumar M</li><li>Mounish K</li><li>Pranesh H</li><li>Prathekaa M</li></ul>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <h1>Feedback</h1>
+    <form class="form-container" onsubmit="alert('Thank you for your feedback!'); return false;">
+      <label>Your Name</label><input type="text" required>
+      <label>Your Email</label><input type="email" required>
+      <label>Your Feedback</label><input type="text" required>
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h1>Contact Us</h1>
+    <div class="contact-container">
+      <p>Reach out for queries:</p>
+      <div><i class="fas fa-phone"></i> +91 98765 43210</div>
+      <div><i class="fas fa-envelope"></i> support@anbuthuli.org</div>
+      <div><i class="fas fa-map-marker-alt"></i> Coimbatore, Tamil Nadu</div>
+    </div>
+  </section>
+
+  <!-- DONOR ELIGIBILITY -->
+  <section id="donor-eligibility">
+    <div class="form-container">
+      <h1>Donor Eligibility Check</h1>
+      <form id="eligibilityForm">
+        <label>1) What is your weight (kg)?</label>
+        <input type="number" id="weight" required>
+        <label>2) Do you have any chronic diseases?</label>
+        <input type="radio" name="chronic" value="no" required> No
+        <input type="radio" name="chronic" value="yes"> Yes
+        <label>3) Do you have a history of cancer or blood-related disorders?</label>
+        <input type="radio" name="cancer" value="no" required> No
+        <input type="radio" name="cancer" value="yes"> Yes
+        <label>4) Are you currently taking any medications?</label>
+        <input type="radio" name="medications" value="no" required> No
+        <input type="radio" name="medications" value="yes"> Yes
+        <label>5) Have you undergone surgery or major dental treatment recently?</label>
+        <input type="radio" name="surgery" value="no" required> No
+        <input type="radio" name="surgery" value="yes"> Yes
+        <label>6) Do you smoke or consume alcohol?</label>
+        <input type="radio" name="alcohol" value="no" required> No
+        <input type="radio" name="alcohol" value="yes"> Yes
+        <label>7) Have you had a recent tattoo, piercing, or acupuncture (within last 6–12 months)?</label>
+        <input type="radio" name="tattoo" value="no" required> No
+        <input type="radio" name="tattoo" value="yes"> Yes
+        <h3 style="color:#ffcc00;margin-top:20px;">(For Women Only)</h3>
+        <label>8) Are you pregnant, breastfeeding, or menstruating?</label>
+        <input type="radio" name="pregnant" value="no"> No
+        <input type="radio" name="pregnant" value="yes"> Yes
+        <label>9) Have you had a miscarriage or childbirth recently?</label>
+        <input type="radio" name="childbirth" value="no"> No
+        <input type="radio" name="childbirth" value="yes"> Yes
+        <button type="submit">Proceed to Registration</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ✅ DONOR REGISTRATION (Functional) -->
+  <section id="donor-register">
+    <div class="form-container">
+      <h1>Donor Registration</h1>
+      <form id="donorRegisterForm">
+        <label>Full Name</label><input type="text" id="donorFullName" required>
+        <label>Age</label><input type="number" id="donorAge" required>
+        <label>Blood Group</label><input type="text" id="donorBloodGroup" required>
+        <label>Phone</label><input type="text" id="donorPhone" required>
+        <label>Password</label><input type="password" id="donorPassword" required>
+        <label>Weight</label><input type="number" id="donorWeight" required>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ✅ HOSPITAL REGISTER (Functional) -->
+  <section id="hospital-register">
+    <div class="form-container">
+      <h1>Hospital Registration</h1>
+      <form id="hospitalRegisterForm">
+        <label>Hospital Name</label><input type="text" id="hospitalName" required>
+        <label>Username</label><input type="text" id="hospitalUsername" required>
+        <label>Phone</label><input type="text" id="hospitalPhone" required>
+        <label>Password</label><input type="password" id="hospitalPassword" required>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- HOSPITAL LOGIN + SEARCH -->
+  <section id="hospital-login">
+    <div class="form-container">
+      <h1>Hospital Login</h1>
+      <form id="hospitalLoginForm">
+        <label>Username</label><input type="text" id="hospitalUser" required>
+        <label>Password</label><input type="password" id="hospitalPass" required>
+        <button type="submit">Login</button>
+      </form>
+
+      <div id="searchSection" style="display:none; margin-top:25px;">
+        <h3>Search Donors by Blood Group</h3>
+        <input type="text" id="searchInput" placeholder="Enter blood group (e.g., O+, A-)" style="width:100%; padding:8px; border-radius:6px;">
+        <button onclick="searchDonors()" style="margin-top:10px;">Search</button>
+        <div id="searchResults" style="margin-top:15px; text-align:left;"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>&copy; 2025 ANBU THULI | Donate Blood, Save Life</footer>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(pageId).classList.add("active");
+    }
+
+    // Donor eligibility
+    document.getElementById("eligibilityForm").onsubmit = function(e) {
+      e.preventDefault();
+      let weight = parseInt(document.getElementById("weight").value);
+      let chronic = document.querySelector('input[name="chronic"]:checked').value;
+      let cancer = document.querySelector('input[name="cancer"]:checked').value;
+      let pregnant = document.querySelector('input[name="pregnant"]:checked')?.value || "no";
+      if (weight < 50) { alert("Not eligible: weight must be 50kg+"); return; }
+      if (chronic === "yes" || cancer === "yes") { alert("Not eligible due to health conditions"); return; }
+      if (pregnant === "yes") { alert("Not eligible during pregnancy"); return; }
+      alert("You are eligible! Proceeding to registration...");
+      showPage('donor-register');
+    };
+
+    // ✅ Donor Register
+    document.getElementById("donorRegisterForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const donor = {
+        fullName: document.getElementById("donorFullName").value,
+        age: parseInt(document.getElementById("donorAge").value),
+        bloodGroup: document.getElementById("donorBloodGroup").value,
+        phone: document.getElementById("donorPhone").value,
+        password: document.getElementById("donorPassword").value,
+        weight: parseInt(document.getElementById("donorWeight").value)
+      };
+      try {
+        const res = await fetch("http://localhost:5000/api/donors/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(donor)
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert("Donor registered successfully!");
+          e.target.reset();
+        } else {
+          alert("Error: " + data.message);
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Server error. Please try again.");
+      }
+    });
+
+    // ✅ Hospital Register
+    document.getElementById("hospitalRegisterForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const hospital = {
+        name: document.getElementById("hospitalName").value,
+        username: document.getElementById("hospitalUsername").value,
+        phone: document.getElementById("hospitalPhone").value,
+        password: document.getElementById("hospitalPassword").value
+      };
+      try {
+        const res = await fetch("http://localhost:5000/api/hospitals/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(hospital)
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alert("Hospital registered successfully!");
+          e.target.reset();
+        } else {
+          alert("Error: " + data.message);
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Server error. Please try again.");
+      }
+    });
+
+    // ✅ Hospital login
+    document.getElementById("hospitalLoginForm").onsubmit = async function(e) {
+      e.preventDefault();
+      const username = document.getElementById("hospitalUser").value;
+      const password = document.getElementById("hospitalPass").value;
+      try {
+        const res = await fetch("http://localhost:5000/api/hospitals/login", {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({username, password})
+        });
+        if (res.ok) {
+          alert("Hospital login successful!");
+          document.getElementById("searchSection").style.display = "block";
+        } else {
+          alert("Invalid credentials!");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Error connecting to backend.");
+      }
+    };
+
+    // ✅ Donor Search
+    async function searchDonors() {
+      const query = document.getElementById("searchInput").value;
+      const output = document.getElementById("searchResults");
+      output.innerHTML = "Searching...";
+      try {
+        const res = await fetch(`http://localhost:5000/api/donors/search?q=${encodeURIComponent(query)}`);
+        const donors = await res.json();
+        if (!donors.length) {
+          output.innerHTML = "<p>No donors found.</p>";
+          return;
+        }
+        output.innerHTML = donors.map(d => `<p><b>${d.fullName}</b> - ${d.bloodGroup} - 📞 ${d.phone}</p>`).join("");
+      } catch (err) {
+        output.innerHTML = "<p>Error fetching donors.</p>";
+      }
+    }
+  </script>
+</body>
+</html>

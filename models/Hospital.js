@@ -9,7 +9,7 @@ const hospitalSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    unique: true,
+    unique: true, // enforces unique usernames
     trim: true
   },
   phone: {
@@ -27,11 +27,7 @@ const hospitalSchema = new mongoose.Schema({
   }
 });
 
-// ✅ Index for faster lookup during login
-hospitalSchema.index({ username: 1 });
-
-// ✅ Optional helper method to verify password
-// (not required now, but useful for cleaner code later)
+// ✅ Optional helper method for password verification
 hospitalSchema.methods.verifyPassword = async function (password, bcrypt) {
   return await bcrypt.compare(password, this.passwordHash);
 };

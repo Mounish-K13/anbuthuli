@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blood Donation - ANBU THULI</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
   <style>
     body { margin: 0; font-family: Copperplate, Papyrus, fantasy; color: white; }
-    nav { display: flex; justify-content: space-between; align-items: center;
-          background: rgba(0,0,0,0.9); padding: 10px 20px; position: sticky; top: 0; z-index: 1000; }
+    nav { display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.9); padding: 10px 20px; position: sticky; top: 0; z-index: 1000; }
     .logo { font-weight: bold; font-size: 1.2rem; color: #b30000; letter-spacing: 2px; }
     nav .nav-links { display: flex; gap: 8px; }
     nav .nav-links button { padding: 6px 12px; background: #b30000; color: white; border: none; border-radius: 15px; cursor: pointer; font-weight: bold; }
@@ -18,8 +16,7 @@
     section.active { display: block; }
     #home { background: url('https://surgmedia.com/wp-content/uploads/2020/10/2171-blood-donation.jpg') center/cover no-repeat; text-align: center; }
     #home h1 { font-size: 42px; color: #ffcc00; margin: 20px 0; }
-    .register-btn { display: inline-block; margin: 10px; padding: 10px 24px; font-size: 16px; color: white;
-                    background: linear-gradient(45deg, #ff0000, #b30000); border-radius: 30px; text-decoration: none; font-weight: bold; }
+    .register-btn { display: inline-block; margin: 10px; padding: 10px 24px; font-size: 16px; color: white; background: linear-gradient(45deg, #ff0000, #b30000); border-radius: 30px; text-decoration: none; font-weight: bold; }
     .form-container { max-width: 500px; margin: auto; background: #111; padding: 20px; border-radius: 10px; }
     .form-container h1 { text-align: center; color: #ffcc00; }
     .form-container label { display: block; margin-top: 12px; }
@@ -61,7 +58,7 @@
   <!-- HOME -->
   <section id="home" class="active">
     <h1>DONATE BLOOD<br>SAVE LIFE</h1>
-    <a href="#" onclick="showPage('donor-eligibility')" class="register-btn">Register as Donor</a>
+    <a href="#" onclick="showPage('donor-register')" class="register-btn">Register as Donor</a>
     <a href="#" onclick="showPage('hospital-register')" class="register-btn">Register as Hospital</a>
     <a href="#" onclick="showPage('hospital-login')" class="register-btn">Hospital Login</a>
   </section>
@@ -110,60 +107,24 @@
     </div>
   </section>
 
-  <!-- DONOR ELIGIBILITY -->
-  <section id="donor-eligibility">
-    <div class="form-container">
-      <h1>Donor Eligibility Check</h1>
-      <form id="eligibilityForm">
-        <label>1) What is your weight (kg)?</label>
-        <input type="number" id="weight" required>
-        <label>2) Do you have any chronic diseases?</label>
-        <input type="radio" name="chronic" value="no" required> No
-        <input type="radio" name="chronic" value="yes"> Yes
-        <label>3) Do you have a history of cancer or blood-related disorders?</label>
-        <input type="radio" name="cancer" value="no" required> No
-        <input type="radio" name="cancer" value="yes"> Yes
-        <label>4) Are you currently taking any medications?</label>
-        <input type="radio" name="medications" value="no" required> No
-        <input type="radio" name="medications" value="yes"> Yes
-        <label>5) Have you undergone surgery or major dental treatment recently?</label>
-        <input type="radio" name="surgery" value="no" required> No
-        <input type="radio" name="surgery" value="yes"> Yes
-        <label>6) Do you smoke or consume alcohol?</label>
-        <input type="radio" name="alcohol" value="no" required> No
-        <input type="radio" name="alcohol" value="yes"> Yes
-        <label>7) Have you had a recent tattoo, piercing, or acupuncture (within last 6–12 months)?</label>
-        <input type="radio" name="tattoo" value="no" required> No
-        <input type="radio" name="tattoo" value="yes"> Yes
-        <h3 style="color:#ffcc00;margin-top:20px;">(For Women Only)</h3>
-        <label>8) Are you pregnant, breastfeeding, or menstruating?</label>
-        <input type="radio" name="pregnant" value="no"> No
-        <input type="radio" name="pregnant" value="yes"> Yes
-        <label>9) Have you had a miscarriage or childbirth recently?</label>
-        <input type="radio" name="childbirth" value="no"> No
-        <input type="radio" name="childbirth" value="yes"> Yes
-        <button type="submit">Proceed to Registration</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- ✅ DONOR REGISTRATION (Functional) -->
+  <!-- DONOR REGISTER -->
   <section id="donor-register">
     <div class="form-container">
       <h1>Donor Registration</h1>
-      <form id="donorRegisterForm">
-        <label>Full Name</label><input type="text" id="donorFullName" required>
+      <form id="donorForm">
+        <label>Full Name</label><input type="text" id="donorName" required>
         <label>Age</label><input type="number" id="donorAge" required>
         <label>Blood Group</label><input type="text" id="donorBloodGroup" required>
         <label>Phone</label><input type="text" id="donorPhone" required>
         <label>Password</label><input type="password" id="donorPassword" required>
-        <label>Weight</label><input type="number" id="donorWeight" required>
+        <label>Weight (kg)</label><input type="number" id="donorWeight" required>
         <button type="submit">Register</button>
       </form>
+      <p id="donorMessage" style="text-align:center; color:yellow;"></p>
     </div>
   </section>
 
-  <!-- ✅ HOSPITAL REGISTER (Functional) -->
+  <!-- HOSPITAL REGISTER -->
   <section id="hospital-register">
     <div class="form-container">
       <h1>Hospital Registration</h1>
@@ -174,24 +135,26 @@
         <label>Password</label><input type="password" id="hospitalPassword" required>
         <button type="submit">Register</button>
       </form>
+      <p id="registerMessage" style="text-align:center; color:yellow;"></p>
     </div>
   </section>
 
-  <!-- HOSPITAL LOGIN + SEARCH -->
+  <!-- HOSPITAL LOGIN -->
   <section id="hospital-login">
     <div class="form-container">
       <h1>Hospital Login</h1>
       <form id="hospitalLoginForm">
-        <label>Username</label><input type="text" id="hospitalUser" required>
-        <label>Password</label><input type="password" id="hospitalPass" required>
+        <label>Username</label><input type="text" id="loginUsername" required>
+        <label>Password</label><input type="password" id="loginPassword" required>
         <button type="submit">Login</button>
       </form>
+      <p id="loginMessage" style="text-align:center; color:yellow;"></p>
 
-      <div id="searchSection" style="display:none; margin-top:25px;">
+      <div id="searchSection" class="hidden" style="margin-top:25px;">
         <h3>Search Donors by Blood Group</h3>
-        <input type="text" id="searchInput" placeholder="Enter blood group (e.g., O+, A-)" style="width:100%; padding:8px; border-radius:6px;">
-        <button onclick="searchDonors()" style="margin-top:10px;">Search</button>
-        <div id="searchResults" style="margin-top:15px; text-align:left;"></div>
+        <input type="text" id="searchQuery" placeholder="Enter blood group (e.g., O+)" style="width:100%; padding:8px; border-radius:6px;">
+        <button id="searchBtn" style="margin-top:10px;">Search</button>
+        <ul id="donorResults" style="margin-top:15px; text-align:left;"></ul>
       </div>
     </div>
   </section>
@@ -204,118 +167,91 @@
       document.getElementById(pageId).classList.add("active");
     }
 
-    // Donor eligibility
-    document.getElementById("eligibilityForm").onsubmit = function(e) {
-      e.preventDefault();
-      let weight = parseInt(document.getElementById("weight").value);
-      let chronic = document.querySelector('input[name="chronic"]:checked').value;
-      let cancer = document.querySelector('input[name="cancer"]:checked').value;
-      let pregnant = document.querySelector('input[name="pregnant"]:checked')?.value || "no";
-      if (weight < 50) { alert("Not eligible: weight must be 50kg+"); return; }
-      if (chronic === "yes" || cancer === "yes") { alert("Not eligible due to health conditions"); return; }
-      if (pregnant === "yes") { alert("Not eligible during pregnancy"); return; }
-      alert("You are eligible! Proceeding to registration...");
-      showPage('donor-register');
-    };
-
-    // ✅ Donor Register
-    document.getElementById("donorRegisterForm").addEventListener("submit", async function(e) {
+    // --- Donor Register ---
+    document.getElementById("donorForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       const donor = {
-        fullName: document.getElementById("donorFullName").value,
-        age: parseInt(document.getElementById("donorAge").value),
-        bloodGroup: document.getElementById("donorBloodGroup").value,
-        phone: document.getElementById("donorPhone").value,
-        password: document.getElementById("donorPassword").value,
-        weight: parseInt(document.getElementById("donorWeight").value)
+        fullName: donorName.value,
+        age: donorAge.value,
+        bloodGroup: donorBloodGroup.value,
+        phone: donorPhone.value,
+        password: donorPassword.value,
+        weight: donorWeight.value
       };
       try {
-        const res = await fetch("http://localhost:5000/api/donors/register", {
+        const res = await fetch("/api/donors/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(donor)
         });
         const data = await res.json();
-        if (res.ok) {
-          alert("Donor registered successfully!");
-          e.target.reset();
-        } else {
-          alert("Error: " + data.message);
-        }
-      } catch (err) {
-        console.error(err);
-        alert("Server error. Please try again.");
+        donorMessage.textContent = data.message || "Registration complete!";
+      } catch {
+        donorMessage.textContent = "⚠️ Server Error. Please try again.";
       }
     });
 
-    // ✅ Hospital Register
-    document.getElementById("hospitalRegisterForm").addEventListener("submit", async function(e) {
+    // --- Hospital Register ---
+    document.getElementById("hospitalRegisterForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       const hospital = {
-        name: document.getElementById("hospitalName").value,
-        username: document.getElementById("hospitalUsername").value,
-        phone: document.getElementById("hospitalPhone").value,
-        password: document.getElementById("hospitalPassword").value
+        name: hospitalName.value,
+        username: hospitalUsername.value,
+        phone: hospitalPhone.value,
+        password: hospitalPassword.value
       };
       try {
-        const res = await fetch("http://localhost:5000/api/hospitals/register", {
+        const res = await fetch("/api/hospitals/register", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(hospital)
         });
         const data = await res.json();
-        if (res.ok) {
-          alert("Hospital registered successfully!");
-          e.target.reset();
-        } else {
-          alert("Error: " + data.message);
-        }
-      } catch (err) {
-        console.error(err);
-        alert("Server error. Please try again.");
+        registerMessage.textContent = data.message || "Hospital registered!";
+      } catch {
+        registerMessage.textContent = "⚠️ Server Error. Please try again.";
       }
     });
 
-    // ✅ Hospital login
-    document.getElementById("hospitalLoginForm").onsubmit = async function(e) {
+    // --- Hospital Login ---
+    document.getElementById("hospitalLoginForm").addEventListener("submit", async (e) => {
       e.preventDefault();
-      const username = document.getElementById("hospitalUser").value;
-      const password = document.getElementById("hospitalPass").value;
+      const credentials = {
+        username: loginUsername.value,
+        password: loginPassword.value
+      };
       try {
-        const res = await fetch("http://localhost:5000/api/hospitals/login", {
+        const res = await fetch("/api/hospitals/login", {
           method: "POST",
-          headers: {"Content-Type": "application/json"},
-          body: JSON.stringify({username, password})
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(credentials)
         });
-        if (res.ok) {
-          alert("Hospital login successful!");
-          document.getElementById("searchSection").style.display = "block";
+        const data = await res.json();
+        if (data.token) {
+          loginMessage.textContent = "✅ Login successful!";
+          document.getElementById("searchSection").classList.remove("hidden");
         } else {
-          alert("Invalid credentials!");
+          loginMessage.textContent = data.message || "Invalid credentials.";
         }
-      } catch (err) {
-        console.error(err);
-        alert("Error connecting to backend.");
+      } catch {
+        loginMessage.textContent = "⚠️ Server Error. Please try again.";
       }
-    };
+    });
 
-    // ✅ Donor Search
-    async function searchDonors() {
-      const query = document.getElementById("searchInput").value;
-      const output = document.getElementById("searchResults");
-      output.innerHTML = "Searching...";
+    // --- Donor Search ---
+    document.getElementById("searchBtn").addEventListener("click", async () => {
+      const query = searchQuery.value.trim();
+      if (!query) return alert("Please enter a blood group.");
       try {
-        const res = await fetch(`http://localhost:5000/api/donors/search?q=${encodeURIComponent(query)}`);
+        const res = await fetch(`/api/donors/search?q=${encodeURIComponent(query)}`);
         const donors = await res.json();
-        if (!donors.length) {
-          output.innerHTML = "<p>No donors found.</p>";
-          return;
-        }
-        output.innerHTML = donors.map(d => `<p><b>${d.fullName}</b> - ${d.bloodGroup} - 📞 ${d.phone}</p>`).join("");
-      } catch (err) {
-        output.innerHTML = "<p>Error fetching donors.</p>";
+        donorResults.innerHTML = donors.length
+          ? donors.map(d => `<li>${d.fullName} - ${d.bloodGroup} - ${d.phone}</li>`).join("")
+          : "<li>No donors found.</li>";
+      } catch {
+        alert("⚠️ Server Error while searching donors.");
       }
-    }
+    });
   </script>
 </body>
 </html>
